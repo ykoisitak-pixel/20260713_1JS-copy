@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxGo!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- js/script.jsを紐づけてください。スクリプトの実行はHTMLの読み込み後になるように属性も記述してください。 -->
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <div class="l-main-container">
+        <div class="c-tax">
+            <h1 class="p-title">TaxGo!</h1>
+            <p class="p-sub-title">パパッとかんたん消費税計算機</p>
+            <div class="c-tax__container">
+                <div class="c-tax__item">
+                    <label for="amount-input" class="c-tax__input-label">金額</label>
+                    <input type="number" id="amount-input" value="" max="999999999" min="0" class="c-tax__input">円
+                </div>
+                <div class="c-tax__controls">
+                    <button id="btn-calc" class="c-btn c-btn__primary">計算する</button>
+                    <button id="btn-clear" class="c-btn c-btn__clear">クリア</button>
+                </div>
+                <div class="c-tax__result">
+                    <table class="c-tbl">
+                        <col class="c-tbl__col-amount">
+                        <col class="c-tbl__col-tax">
+                        <thead>
+                            <tr>
+                                <th colspan="2">外税の場合</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>税込金額</th>
+                                <th>税金額</th>
+                            </tr>
+                            <tr>
+                                <td class="c-tbl__cell-amount">
+                                    <span id="amount-include" class="c-tbl__amount"></span>円
+                                </td>
+                                <td class="c-tbl__cell-amount"><span id="tax-include" class="c-tbl__amount"></span>円
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="c-tbl">
+                        <col class="c-tbl__col-amount">
+                        <col class="c-tbl__col-tax">
+                        <thead>
+                            <tr>
+                                <th colspan="2">内税の場合</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>税抜金額</th>
+                                <th>税金額</th>
+                            </tr>
+                            <tr>
+                                <td class="c-tbl__cell-amount">
+                                    <span id="amount-exclude" class="c-tbl__amount"></span>円
+                                </td>
+                                <td class="c-tbl__cell-amount">
+                                    <span id="tax-exclude" class="c-tbl__amount"></span>円
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

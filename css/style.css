@@ -1,0 +1,223 @@
+@charset 'utf-8';
+
+:root {
+    /* tokens */
+    --color-white: rgb(255, 255, 255);
+    --color-black: rgb(0, 0, 0);
+
+    --color-gray-1: rgb(248, 248, 248);
+    --color-gray-2: rgb(230, 230, 230);
+    --color-gray-3: rgb(217, 217, 217);
+    --color-gray-4: rgb(194, 194, 194);
+    --color-gray-5: rgb(150, 150, 150);
+    --color-gray-6: rgb(114, 114, 114);
+    --color-gray-7: rgb(74, 74, 74);
+    --color-gray-8: rgb(48, 48, 48);
+    --color-gray-9: rgb(32, 32, 32);
+    --color-gray-10: rgb(16, 16, 16);
+
+    --color-primary-0: rgb(238, 247, 250);
+    --color-primary-1: rgb(205, 229, 238);
+    --color-primary-2: rgb(155, 203, 222);
+    --color-primary-3: rgb(105, 177, 205);
+    --color-primary-4: rgb(55, 151, 189);
+    --color-primary-5: rgb(5, 125, 172);
+    --color-primary-6: rgb(4, 100, 138);
+    --color-primary-7: rgb(3, 75, 103);
+    --color-primary-8: rgb(2, 50, 69);
+    --color-primary-9: rgb(1, 25, 34);
+
+    --ff-base: 'Roboto Mono', 'Noto Sans JP', sans-serif;
+    --ff-number: 'Roboto Mono', serif;
+
+    --fz-base: 1rem;
+    --fz-sm: calc(var(--fz-base) - .25rem);
+    --fz-md: var(--fz-base);
+    --fz-lg: calc(var(--fz-base) + .5rem);
+    --fz-xl: calc(var(--fz-base) + 1rem);
+    --fz-xxl: calc(var(--fz-base) + 2rem);
+
+    --fw-base: 400;
+    --fw-bold: 700;
+
+    /* semantics */
+    --color-text-title: var(--color-primary-5);
+
+    --color-input-border: var(--color-gray-4);
+    --color-input-border-focus: var(--color-primary-5);
+    --color-input-outline-focus: var(--color-primary-5);
+    --color-input-bg-focus: var(--color-primary-0);
+
+    --color-btn-primary: var(--color-primary-5);
+    --color-btn-primary-hover: var(--color-primary-6);
+    --color-btn-clear: var(--color-gray-5);
+    --color-btn-clear-hover: var(--color-gray-6);
+    --color-btn-text: var(--color-white);
+
+    --color-tbl-border: var(--color-gray-3);
+    --color-tbl-thead: var(--color-primary-1);
+    --color-tbl-tbody-th: var(--color-gray-1);
+
+    --ff-input: var(--ff-number);
+
+    --fz-title: var(--fz-xxl);
+    --fz-sub-title: var(--fz-md);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../img/struckaxiom.webp);
+    background-size: 40px auto;
+    font-family: 'Roboto Mono', 'Noto Sans JP', sans-serif;
+    color: #333;
+}
+
+.l-main-container {
+    width: 100%;
+    padding: 2rem;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.p-title {
+    font-size: var(--fz-title);
+    font-weight: var(--fw-bold);
+    text-align: center;
+    margin-bottom: .3em;
+    color: var(--color-text-title);
+}
+
+.p-sub-title {
+    font-size: var(--fz-sub-title);
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.c-tax {
+    width: 100%;
+}
+
+.c-tax__container {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0 0 0 /.15);
+    width: 100%;
+    max-width: 48rem;
+    margin-inline: auto;
+}
+
+.c-tax__item {
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.c-tax__input {
+    padding: .5em;
+    font-size: 2rem;
+    border: 2px solid var(--color-input-border);
+    border-radius: 4px;
+    text-align: end;
+    width: clamp(10ch, 50vw, 20ch);
+    font-family: var(--ff-input);
+    transition: .3s;
+    outline: transparent solid 1px;
+}
+
+.c-tax__input:focus,
+.c-tax__input:focus-visible {
+    outline: var(--color-input-outline-focus) solid 1px;
+    background: var(--color-input-bg-focus);
+    border-color: var(--color-input-border-focus);
+}
+
+
+
+.c-tax__controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.c-tax__result {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+
+.c-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--color-tbl-border);
+}
+
+.c-tbl th,
+.c-tbl td {
+    padding: .5rem;
+    border: 1px solid var(--color-tbl-border);
+}
+
+.c-tbl thead th {
+    background: var(--color-tbl-thead);
+}
+
+.c-tbl tbody th {
+    background: var(--color-tbl-tbody-th);
+}
+
+.c-tbl__col-amount {
+    width: 65%;
+}
+
+.c-tbl__col-tax {
+    width: 35%;
+}
+
+.c-tbl__cell-amount {
+    text-align: end;
+}
+
+.c-tbl__amount {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: var(--ff-input);
+}
+
+/* ボタン */
+.c-btn {
+    border: none;
+    padding: 1rem;
+    color: var(--color-btn-text);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: .5rem;
+    line-height: 1;
+    transition: .3s;
+}
+
+.c-btn__primary {
+    background-color: var(--color-btn-primary);
+}
+
+.c-btn__primary:hover {
+    background-color: var(--color-btn-primary-hover);
+}
+
+.c-btn__clear {
+    background-color: var(--color-btn-clear);
+}
+
+.c-btn__clear:hover {
+    background-color: var(--color-btn-clear-hover);
+}
