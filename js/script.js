@@ -25,20 +25,20 @@ const taxExclude = document.querySelector('#tax-exclude');
 // 外税計算関数（金額の外税込金額と外税金額を返す）
 const calcTaxInclude = (amount) => {
     const tax = Math.floor(amount * TAX_RATE);
-    const incAmount = Math.floor(amount + tax);
+    const incAmount = amount + tax;
     return { incAmount, tax };
 };
 
 // 内税計算関数（金額の内税込金額と内税金額を返す）
 const calcTaxExclude = (amount) => {
     const exAmount = Math.floor(amount / (1 + TAX_RATE));
-    const tax = Math.floor(amount - exAmount);
+    const tax = amount - exAmount;
     return { exAmount, tax };
 };
 
 btnCalc.addEventListener('click', () => {
     // 空の場合はアラートalert() を上げて（alert 文言は「金額を入力してください」としてください）
-    if (document.querySelector('#amount-input').value == '') {
+    if (amountInput.value == '') {
         alert('金額を入力してください');
         document.getElementById("amount-input").focus();
         return;
@@ -66,22 +66,21 @@ btnCalc.addEventListener('click', () => {
         console.log(`消費税額: ${taxExclude}円`);
 
         // それぞれの結果表示用の要素（amountInclude などの textContent プロパティ）に計算結果を反映させます。
-        document.querySelector('#amount-include').textContent = amountInclude.toLocaleString();
-        document.querySelector('#tax-include').textContent = taxInclude.toLocaleString();
-        document.querySelector('#amount-exclude').textContent = amountExclude.toLocaleString();
-        document.querySelector('#tax-exclude').textContent = taxExclude.toLocaleString();
-
+        document.querySelector("#amount-include").textContent = amountInclude.toLocaleString();
+        document.querySelector("#tax-include").textContent = taxInclude.toLocaleString();
+        document.querySelector("#amount-exclude").textContent = amountExclude.toLocaleString();
+        document.querySelector("#tax-exclude").textContent = taxExclude.toLocaleString();
     }
 });
 
 btnClear.addEventListener('click', () => {
     // 入力エリア amountInput の値を空（''）にします。
-    document.querySelector('#amount-input').value = '';
+    amountInput.value = '';
     // 画面に表示されているすべての計算結果のテキストを空（''）にします。
-    document.querySelector('#amount-include').textContent = "";
-    document.querySelector('#tax-include').textContent = "";
-    document.querySelector('#amount-exclude').textContent = "";
-    document.querySelector('#tax-exclude').textContent = "";
+    amountInclude.textContent = '';
+    taxInclude.textContent = '';
+    amountExclude.textContent = '';
+    taxExclude.textContent = '';
     // 次の入力をスムーズに行えるよう、amountInput に focus() メソッドでカーソルフォーカスを当てます。
     document.getElementById("amount-input").focus();
 });
