@@ -38,24 +38,29 @@ const calcTaxExclude = (amount) => {
 
 btnCalc.addEventListener('click', () => {
     // 空の場合はアラートalert() を上げて（alert 文言は「金額を入力してください」としてください）
-    if (amountInput.value == '') {
+    // 入力値の取得
+    const amountValue = amountInput.value;
+    if (amountValue == '' || amountValue == '0') {
+        amountInput.focus();
         alert('金額を入力してください');
-        document.getElementById("amount-input").focus();
         return;
     } else {
         // 作成した関数 calcTaxInclude と calcTaxExclude を呼び出し、数値 amountNum を渡し、計算結果を受け取ります。
         // 数値amountNum への変換
         const amountNum = parseInt(amountInput.value, 10)
+        // 計算結果を取得
+        const resultInc = calcTaxInclude(amountNum);
+        const resultEx = calcTaxExclude(amountNum);
 
         // 外税　税込金額
-        const amountInclude = calcTaxInclude(amountNum).incAmount;
+        const amountInclude = resultInc.incAmount;
         // 外税　税金額
-        const taxInclude = calcTaxInclude(amountNum).tax;
+        const taxInclude = resultInc.tax;
 
         // 内税　税込金額
-        const amountExclude = calcTaxExclude(amountNum).exAmount;
+        const amountExclude = resultEx.exAmount;
         // 内税　税金額
-        const taxExclude = calcTaxExclude(amountNum).tax;
+        const taxExclude = resultEx.tax;
 
         // const taxExclude = Math.floor(parseInt(document.querySelector('#amount-input').value) - amountExclude);
 
